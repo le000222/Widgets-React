@@ -6,7 +6,7 @@ const SearchBar = ({ onFormSubmit }) => {
   const onSubmit = (event) => {
     event.preventDefault();
 
-    onFormSubmit(term, 10);
+    onFormSubmit(term, 20);
   };
 
   return (

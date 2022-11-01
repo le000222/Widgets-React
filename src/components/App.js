@@ -3,9 +3,10 @@ import Accordion from './Accordion';
 import Search from './Search';
 import Dropdown from './Dropdown';
 // import Translate from './translate/Translate';
-import Route from './header/Route';
-import Header from './header/Header';
+import Route from './Route';
+import Header from './Header';
 import Youtube from './youtube/Youtube';
+import Tasks from './task/Tasks';
 
 const items = [
   {
@@ -39,21 +40,9 @@ const options = [
 
 const App = () => {
   const [selected, setSelected] = useState(options[0]);
-  // const [showDropdown, setShowDropdown] = useState(true);
 
   return (
     <div>
-      {/* <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle Dropdown
-      </button>
-      {showDropdown ? (
-        <Dropdown
-          label="Select a Color"
-          selected={selected}
-          onSelectedChange={setSelected}
-          options={options}
-        />
-      ) : null} */}
       <Header />
       <Route path='/'>
         <Accordion items={items} />
@@ -74,6 +63,9 @@ const App = () => {
       </Route> */}
       <Route path='/youtube'>
         <Youtube />
+      </Route>
+      <Route path='/task'>
+        <Tasks />
       </Route>
     </div>
   );

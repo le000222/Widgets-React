@@ -1,0 +1,14 @@
+.background {
+  background: #dbdbdb;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.background.active {
+  border-left: 5px solid green;
+}
+
+.task {
+  cursor: pointer;
+  color: rgb(159, 31, 31);
+}

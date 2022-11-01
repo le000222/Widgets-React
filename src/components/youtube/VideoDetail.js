@@ -1,6 +1,8 @@
 import React from 'react';
 
 const VideoDetail = ({ selectedVid, onFormSubmit }) => {
+  // console.log(selectedVid);
+
   if (!selectedVid) {
     return (
       <div>
@@ -19,6 +21,12 @@ const VideoDetail = ({ selectedVid, onFormSubmit }) => {
       <div className='ui segment'>
         <div className='ui header'>
           <h4>{selectedVid.snippet.title}</h4>
+        </div>
+        <div className='ui header'>
+          <h4>
+            {selectedVid.snippet.channelTitle}{' '}
+            <i className='ui smaller icon check circle'></i>
+          </h4>
         </div>
         <p>{selectedVid.snippet.description}</p>
       </div>

@@ -9,6 +9,7 @@ const Header = () => {
       <Link href='/dropdown' label='Dropdown' />
       {/* <Link href='/translate' label='Translate' /> */}
       <Link href='/youtube' label='Youtube' />
+      <Link href='/task' label='Task' />
     </div>
   );
 };

@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
-import YoutubeApi from './api/YoutubeApi';
+import YoutubeApi from '../../api/YoutubeApi';
+import Comments from './Comments';
 
 const Youtube = () => {
   const [videos, setVideos] = useState([]);
   const [selectedVid, setSelectedVid] = useState('');
+
+  // Initial load only
+  // useEffect(() => {
+  //   onFormSubmit('dogs');
+  // }, []);
 
   const onFormSubmit = async (term, numVid) => {
     const data = await YoutubeApi.get('/search', {
@@ -26,6 +32,7 @@ const Youtube = () => {
       <div className='ui grid'>
         <div className='eleven wide column'>
           <VideoDetail initalPage={onFormSubmit} selectedVid={selectedVid} />
+          <Comments selectedVid={selectedVid} />
         </div>
         <div className='five wide column'>
           <VideoList

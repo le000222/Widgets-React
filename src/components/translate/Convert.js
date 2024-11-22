@@ -18,16 +18,16 @@ const Convert = ({ lang, text }) => {
   useEffect(() => {
     const doTranslation = async () => {
       const { data } = await axios.post(
-        'https://translation.googleapis.com/language/translate/v2',
-        {},
-        {
-          params: {
-            q: debouncedText,
-            target: lang.value,
-            key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms - IwDlM',
-          },
-        }
-      );
+				"https://translation.googleapis.com/language/translate/v2",
+				{},
+				{
+					params: {
+						q: debouncedText,
+						target: lang.value,
+						key: process.env.REACT_APP_DICTIONARY,
+					},
+				}
+			);
 
       setTranslated(data.data.translations[0].translatedText);
     };

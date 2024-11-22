@@ -1,79 +1,89 @@
 import React, { useState } from 'react';
 import AddTask from './AddTask';
 import Task from './Task';
-import './Task.css';
+import "./Tasks.css";
+import { TASKS } from "../../resources/constants";
 
 const Tasks = () => {
-  const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      name: 'Compilers Assignment Due',
-      day: 'Sun 6 Nov 2022 at 11:59pm',
-      reminder: true,
-    },
-    {
-      id: 2,
-      name: 'Grocery',
-      day: 'Sat 28 Nov 2022 at 9am-11am',
-      reminder: false,
-    },
-    {
-      id: 3,
-      name: 'Do homework',
-      day: 'Mon, Wed, Thurs weekly',
-      reminder: true,
-    },
-  ]);
+	const [showAddTask, setShowAddTask] = useState(true);
+	const [tasks, setTasks] = useState(
+		TASKS.sort((a, b) => new Date(a.date) - new Date(b.date))
+	);
+	const [editTask, setEditTask] = useState(null);
 
-  const onAddTask = (task) => {
-    setTasks([...tasks, task]);
-  };
+	const onAddTask = task => {
+		setTasks([...tasks, task]);
+	};
 
-  const onDeleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
-  };
+	const onDeleteTask = id => {
+		setTasks(tasks.filter(task => task.id !== id));
+	};
 
-  const onToggleReminder = (id) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
-      )
-    );
-  };
+	const onToggleReminder = id => {
+		setTasks(
+			tasks.map(task =>
+				task.id === id ? { ...task, reminder: !task.reminder } : task
+			)
+		);
+	};
 
-  const renderedTasks = tasks.map((task) => {
-    return (
-      <div className='item'>
-        <Task
-          key={task.id}
-          task={task}
-          onDeleteTask={onDeleteTask}
-          onToggleReminder={onToggleReminder}
-        />
-      </div>
-    );
-  });
+	const onEditTask = ({ id, name, description, date, time, reminder }) => {
+		console.log("ONEDITTASK: ", {
+			id,
+			name,
+			description,
+			date,
+			time,
+			reminder,
+		});
+		const updatedTasks = tasks.map(task =>
+			task.id === id
+				? { ...task, id, name, description, date, time, reminder }
+				: task
+		);
+		setTasks(updatedTasks);
+	};
 
-  return (
-    <div className='ui very padded segment'>
-      <div>
-        <h2>
-          Task Tracker
-          <input
-            className='ui right floated button'
-            type='submit'
-            value={showAddTask ? 'Close' : 'Add'}
-            onClick={(e) => setShowAddTask(!showAddTask)}
-          />
-        </h2>
-      </div>
-      <div>{showAddTask && <AddTask onAddTask={onAddTask} />}</div>
-      <div className='ui relaxed list'>
-        {tasks.length > 0 ? renderedTasks : 'No Tasks To Show'}
-      </div>
-    </div>
-  );
+	return (
+		<div className="ui container">
+			<div className="ui very padded segment">
+				<div>
+					<h2>
+						Task Tracker
+						<input
+							className="ui right floated button"
+							type="submit"
+							value={showAddTask ? "Close" : "Add"}
+							onClick={e => setShowAddTask(!showAddTask)}
+						/>
+					</h2>
+				</div>
+				{showAddTask && (
+					<AddTask
+						onAddTask={onAddTask}
+						editTask={editTask}
+						onEditTask={onEditTask}
+						setEditTask={setEditTask}
+					/>
+				)}
+				<div className="ui three column grid">
+					{tasks.length > 0
+						? tasks.map(task => (
+								<div className="column" key={task.id}>
+									<Task
+										key={task.id}
+										task={task}
+										onDeleteTask={onDeleteTask}
+										onToggleReminder={onToggleReminder}
+										setEditTask={setEditTask}
+									/>
+								</div>
+						  ))
+						: "No Tasks To Show"}
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Tasks;

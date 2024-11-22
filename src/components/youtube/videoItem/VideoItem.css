@@ -1,0 +1,31 @@
+.ui.image, .detail .title {
+  cursor: pointer;
+}
+.item.video-item.video-list{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ui.image.video-list {
+  width: 180px;
+  border-radius: 10px;
+}
+
+/********** INITAL LOAD ***************/
+.ui.image.initial-load {
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 10px;
+}
+.detail.initial-load {
+  display: flex;
+  flex-direction: column;
+}
+.detail.initial-load .title {
+  padding-top: 1rem;
+  font-size: 18px;
+}
+.detail.initial-load .channel {
+  margin: 0.5rem 0 0 0;
+  font-size: 15px;
+}

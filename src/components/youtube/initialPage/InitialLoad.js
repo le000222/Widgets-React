@@ -13,7 +13,7 @@ export const InitialLoad = ({ videos, onVideoClick }) => {
 						<VideoItem
 							key={video.id.videoId}
 							video={video}
-							onClick={() => onVideoClick(video.id.videoId)}
+							onVideoClick={onVideoClick}
 							contextName="initial-load"
 							// selectedVid={selectedVid}
 							// setSelectedVid={setSelectedVid}

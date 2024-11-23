@@ -1,0 +1,20 @@
+.ui.comments.comment {
+    padding: 0;
+}
+.actions.comment {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+}
+.actions.comment .reply,
+.actions.comment .like {
+    padding: 7px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.actions.comment .reply:hover,
+.actions.comment .like:hover {
+    background-color: rgb(213, 213, 213);
+    opacity: 0.7;
+}

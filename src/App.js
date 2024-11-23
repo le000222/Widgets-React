@@ -12,10 +12,10 @@ const App = () => {
 		<Router>
 			<Header />
 			<Routes>
-				{/* <Route path="/" element={<Youtube />} />
-				<Route path="/youtube" element={<VideoDetail />} /> */}
-				<Route path="/wikisearch" element={<WikiSearch />} />
+				<Route path="/" element={<Youtube />} />
+				<Route path="/youtube" element={<VideoDetail />} />
 				<Route path="/task" element={<Tasks />} />
+				<Route path="/wikisearch" element={<WikiSearch />} />
 				<Route path="/translate" element={<Translate />} />
 			</Routes>
 		</Router>

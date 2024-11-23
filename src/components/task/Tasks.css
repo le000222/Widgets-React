@@ -16,20 +16,20 @@
   min-height: 150px; 
   width: 100%;
 }
-.content {
+.task-content {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
   display: block;
 }
-.content .due-date {
+.task-content .due-date {
   font-size: 18px;
 }
-.content .due-date.pass {
+.task-content .due-date.pass {
   color: rgb(170, 42, 42);
 }
-.content .task-header {
+.task-content .task-header {
   font-size: 24px;
   display: flex;
   justify-content: space-between;
@@ -38,7 +38,7 @@
   color: rgb(170, 42, 42);
   font-size: 26px;
 }
-.content .description {
+.task-content .description {
   margin-top: 0.5rem;
   text-overflow: ellipsis;
 }

@@ -15,7 +15,7 @@ const Task = ({ task, onDeleteTask, onToggleReminder, setEditTask }) => {
 			onDoubleClick={() => onToggleReminder(task.id)}
 		>
 			<div className="card task">
-				<div className="content">
+				<div className="task-content">
 					<h3 className="task-header">
 						{task.name}
 						<div className="icon-delete" onClick={() => onDeleteTask(task.id)}>

@@ -2,11 +2,7 @@ import React from "react";
 import { LuDot } from "react-icons/lu";
 import "./VideoItem.css";
 
-const VideoItem = ({ video, selectedVid, setSelectedVid, contextName }) => {
-	if (video === selectedVid) {
-		return null;
-	}
-
+const VideoItem = ({ video, contextName, onVideoClick }) => {
 	const viewCount = view => {
 		if (view < 1000) return view + " views";
 		else if (view >= 1000 && view < 1000000)
@@ -33,7 +29,7 @@ const VideoItem = ({ video, selectedVid, setSelectedVid, contextName }) => {
 	return (
 		<div
 			className={`item video-item ${contextName}`}
-			onClick={() => setSelectedVid(video)}
+			onClick={() => onVideoClick(video.id.videoId)}
 		>
 			<img
 				className={`ui image ${contextName}`}
@@ -42,14 +38,14 @@ const VideoItem = ({ video, selectedVid, setSelectedVid, contextName }) => {
 			/>
 			<div className={`detail ${contextName}`}>
 				<strong className="title">{video.snippet.title}</strong>
-				{/* <div className="channel">
+				<div className="channel">
 					{video.snippet.channelTitle} {"  "}
 					<i className="ui smaller icon check circle" />
 					<br />
 					{viewCount(video.statistics.viewCount)}
 					<LuDot />
 					{duration(video.snippet.publishedAt.split("T")[0])}
-				</div> */}
+				</div>
 			</div>
 		</div>
 	);

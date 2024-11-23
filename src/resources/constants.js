@@ -1,3 +1,26 @@
+export const NUMVIDS = 10;
+
+export const COMMENTS = [
+	{
+		id: 1,
+		name: "Eri Le",
+		avatar:
+			"https://external-preview.redd.it/_NbrzqmPVMTq2tvCjxlh9GMv5sw4-8oBAO_th0M6wZk.png?auto=webp&s=0cd3d8057d2bcbb682c091c264b7f7c730aa9e2e",
+		date: "Today at 5:43PM",
+		comment: "How amazing this is!",
+		replies: [],
+	},
+	{
+		id: 2,
+		name: "Alex Pham",
+		avatar:
+			"https://anime.houseart.me/wp-content/uploads/2020/02/Avatars.-on-Instagram-%E2%80%9CRandom-bnha-av-@iqufd.spc%E2%80%9D.jpg",
+		date: "2 days ago",
+		comment: "This is such an amazing videos",
+		replies: [],
+	},
+];
+
 export const TASKS = [
 	{
 		id: 1,

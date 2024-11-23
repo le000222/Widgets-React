@@ -1,10 +1,9 @@
 import WikiSearch from "./components/wikiSearch/WikiSearch";
-// import Route from "./components/Route";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Youtube from "./components/youtube/Youtube";
 import Tasks from "./components/task/Tasks";
 import Translate from "./components/translate/Translate";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import VideoDetail from "./components/youtube/videoList/VideoDetail";
 
 const App = () => {

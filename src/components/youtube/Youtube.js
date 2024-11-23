@@ -5,7 +5,7 @@ import { InitialLoad } from "./initialPage/InitialLoad";
 import { useNavigate } from "react-router-dom";
 import { NUMVIDS } from "../../resources/constants";
 
-const Youtube = ({ setAllVideos }) => {
+const Youtube = ({ allVideos, setAllVideos }) => {
 	const navigate = useNavigate();
 	const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,7 +35,7 @@ const Youtube = ({ setAllVideos }) => {
 		<div className="ui container">
 			<SearchBar onFormSubmit={onFormSubmit} />
 			{setAllVideos && (
-				<InitialLoad videos={setAllVideos} onVideoClick={handleVideoClick} />
+				<InitialLoad videos={allVideos} onVideoClick={handleVideoClick} />
 			)}
 		</div>
 	);

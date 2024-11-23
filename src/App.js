@@ -25,7 +25,7 @@ const App = () => {
 				/>
 				<Route path="/task" element={<Tasks />} />
 				<Route path="/wikisearch" element={<WikiSearch />} />
-				{/* <Route path="/translate" element={<Translate />} /> */}
+				<Route path="/translate" element={<Translate />} />
 			</Routes>
 		</Router>
 	);

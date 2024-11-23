@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { NUMVIDS } from "../../../resources/constants";
+// import { NUMVIDS } from "../../../resources/constants";
 import Comments from "../comment/Comments";
-import YoutubeApi from "../../../api/YoutubeApi";
+import YoutubeApi from "../../../api/youtube";
 import VideoItem from "../videoItem/VideoItem";
 import "./VideoDetail.css";
 
-const VideoDetail = () => {
+const VideoDetail = ({ allVideos }) => {
 	const location = useLocation();
 	const queryParams = new URLSearchParams(location.search);
 	const [videoId, setVideoId] = useState(queryParams.get("id"));
-	const searchTerm = queryParams.get("q");
 	const [selectedVid, setSelectedVid] = useState("");
-	const [allVideos, setAllVideos] = useState([]);
+	// const searchTerm = queryParams.get("q");
+	// const [allVideos, setAllVideos] = useState([]);
 
 	const videoDetailFetch = async () => {
 		const videoDetails = await YoutubeApi.get("/videos", {
@@ -26,23 +26,23 @@ const VideoDetail = () => {
 		setSelectedVid(videoDetails.data.items[0]);
 	};
 
-	const allVideosFetch = async () => {
-		const searchResponse = await YoutubeApi.get("/search", {
-			params: {
-				q: searchTerm,
-				type: "video",
-				part: "snippet",
-				maxResults: NUMVIDS,
-			},
-		});
+	// const allVideosFetch = async () => {
+	// 	const searchResponse = await YoutubeApi.get("/search", {
+	// 		params: {
+	// 			q: searchTerm,
+	// 			type: "video",
+	// 			part: "snippet",
+	// 			maxResults: NUMVIDS,
+	// 		},
+	// 	});
 
-		setAllVideos(searchResponse.data.items);
-	};
+	// 	setAllVideos(searchResponse.data.items);
+	// };
 
 	useEffect(() => {
 		console.log("VIDEO ID: ", videoId);
 		if (videoId) videoDetailFetch();
-		allVideosFetch();
+		// allVideosFetch();
 	}, [videoId]);
 
 	return (

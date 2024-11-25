@@ -1,6 +1,5 @@
 import React from "react";
 import VideoItem from "../videoItem/VideoItem";
-import "./InitialLoad.css";
 
 export const InitialLoad = ({ videos, onVideoClick }) => {
 	return (

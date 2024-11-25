@@ -23,7 +23,6 @@ const Convert = ({ lang, text }) => {
 				target: lang.value,
 			});
 
-			console.log("DATA: ", data);
 			setTranslated(data.data.translations[0].translatedText);
 		};
 

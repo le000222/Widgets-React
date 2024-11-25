@@ -17,9 +17,6 @@
   width: 100%;
 }
 .task-content {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   width: 100%;
   display: block;
 }
@@ -40,7 +37,12 @@
 }
 .task-content .description {
   margin-top: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   text-overflow: ellipsis;
+  word-wrap: break-word;
 }
 
 /************ ADD TASKS **********/

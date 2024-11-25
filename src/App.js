@@ -1,22 +1,32 @@
 import WikiSearch from "./components/wikiSearch/WikiSearch";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import Header from "./components/header/Header";
-import Youtube from "./components/youtube/Youtube";
+import Youtube from "./components/youtube/youtubeHome/YoutubeHome";
 import Tasks from "./components/task/Tasks";
 import Translate from "./components/translate/Translate";
 import VideoDetail from "./components/youtube/videoList/VideoDetail";
-import { useState } from "react";
 
 const App = () => {
 	const [allVideos, setAllVideos] = useState([]);
+	const [searchTerm, setSearchTerm] = useState("dogs");
+
 	return (
 		<Router>
-			<Header />
+			<Header
+				searchTerm={searchTerm}
+				setSearchTerm={setSearchTerm}
+				setAllVideos={setAllVideos}
+			/>
 			<Routes>
 				<Route
 					path="/"
 					element={
-						<Youtube allVideos={allVideos} setAllVideos={setAllVideos} />
+						<Youtube
+							allVideos={allVideos}
+							setAllVideos={setAllVideos}
+							searchTerm={searchTerm}
+						/>
 					}
 				/>
 				<Route

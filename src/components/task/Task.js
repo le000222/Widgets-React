@@ -29,9 +29,7 @@ const Task = ({ task, onDeleteTask, onToggleReminder, setEditTask }) => {
 						</strong>
 					</div>
 					<i>
-						<div className="description" id="description">
-							{task.description}
-						</div>
+						<div className="description">{task.description}</div>
 					</i>
 				</div>
 				<div className="extra content">

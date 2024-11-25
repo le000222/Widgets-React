@@ -1,4 +1,4 @@
-export const NUMVIDS = 10;
+export const NUMVIDS = 20;
 
 export const COMMENTS = [
 	{

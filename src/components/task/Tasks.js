@@ -28,14 +28,6 @@ const Tasks = () => {
 	};
 
 	const onEditTask = ({ id, name, description, date, time, reminder }) => {
-		console.log("ONEDITTASK: ", {
-			id,
-			name,
-			description,
-			date,
-			time,
-			reminder,
-		});
 		const updatedTasks = tasks.map(task =>
 			task.id === id
 				? { ...task, id, name, description, date, time, reminder }

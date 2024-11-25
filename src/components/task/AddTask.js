@@ -17,7 +17,6 @@ const AddTask = ({ onAddTask, editTask, onEditTask, setEditTask }) => {
 		}
 	}, [editTask]);
 
-	console.log("EDIT TASK: ", editTask);
 	const onSubmit = event => {
 		event.preventDefault();
 		//Edit task
@@ -33,7 +32,6 @@ const AddTask = ({ onAddTask, editTask, onEditTask, setEditTask }) => {
 		}
 		//Add new task
 		else {
-			console.log("ADD TASKS");
 			if (!name) {
 				alert("Please enter task name");
 				return;

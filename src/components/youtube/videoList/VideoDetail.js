@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-// import { NUMVIDS } from "../../../resources/constants";
 import Comments from "../comment/Comments";
-import YoutubeApi from "../../../api/youtube";
 import VideoItem from "../videoItem/VideoItem";
 import "./VideoDetail.css";
 
@@ -10,39 +8,16 @@ const VideoDetail = ({ allVideos }) => {
 	const location = useLocation();
 	const queryParams = new URLSearchParams(location.search);
 	const [videoId, setVideoId] = useState(queryParams.get("id"));
-	const [selectedVid, setSelectedVid] = useState("");
-	// const searchTerm = queryParams.get("q");
-	// const [allVideos, setAllVideos] = useState([]);
+	const [selectedVid, setSelectedVid] = useState(null);
+	const [videos, setVideos] = useState(allVideos);
 
-	const videoDetailFetch = async () => {
-		const videoDetails = await YoutubeApi.get("/videos", {
-			params: {
-				id: videoId,
-				part: "snippet,statistics,contentDetails",
-			},
-		});
-
-		console.log(videoDetails);
-		setSelectedVid(videoDetails.data.items[0]);
+	const videoDetailFetch = () => {
+		setSelectedVid(allVideos.find(video => video.id.videoId === videoId));
+		setVideos(allVideos.filter(video => video.id.videoId !== videoId));
 	};
 
-	// const allVideosFetch = async () => {
-	// 	const searchResponse = await YoutubeApi.get("/search", {
-	// 		params: {
-	// 			q: searchTerm,
-	// 			type: "video",
-	// 			part: "snippet",
-	// 			maxResults: NUMVIDS,
-	// 		},
-	// 	});
-
-	// 	setAllVideos(searchResponse.data.items);
-	// };
-
 	useEffect(() => {
-		console.log("VIDEO ID: ", videoId);
 		if (videoId) videoDetailFetch();
-		// allVideosFetch();
 	}, [videoId]);
 
 	return (
@@ -75,7 +50,7 @@ const VideoDetail = ({ allVideos }) => {
 						</div>
 						<div className="five wide column">
 							<div className="ui relaxed divided list">
-								{allVideos.map((video, index) => (
+								{videos.map((video, index) => (
 									<VideoItem
 										key={index}
 										video={video}
